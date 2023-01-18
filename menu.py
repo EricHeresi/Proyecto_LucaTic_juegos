@@ -17,7 +17,7 @@ def menu_principal():
 
 
 def pedir_opcion():
-    numero = -1
+    numero = int(input("Seleccione una opcion: "))
     while numero < 0 or numero > 13:
         numero = int(input("Seleccione una opcion correcta: "))
     return numero
