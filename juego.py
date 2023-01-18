@@ -9,11 +9,18 @@ def crear_juego_parametros(name, platform, year, genre, publisher, na_sales=0,
 
 def crear_juego(lista_parametros):
     if len(lista_parametros) == 10:
-        return crear_juego_parametros(lista_parametros[0], lista_parametros[1],
-                                      lista_parametros[2], lista_parametros[3],
-                                      lista_parametros[4], lista_parametros[5],
-                                      lista_parametros[6], lista_parametros[7],
-                                      lista_parametros[8], lista_parametros[9])
+        if lista_parametros[2] == "N/A":
+            lista_parametros[2] = 0
+        return crear_juego_parametros(lista_parametros[0],
+                                      lista_parametros[1],
+                                      int(lista_parametros[2]),
+                                      lista_parametros[3],
+                                      lista_parametros[4],
+                                      float(lista_parametros[5]),
+                                      float(lista_parametros[6]),
+                                      float(lista_parametros[7]),
+                                      float(lista_parametros[8]),
+                                      float(lista_parametros[9]))
     elif len(lista_parametros) == 5:
         return crear_juego_parametros(lista_parametros[0], lista_parametros[1],
                                       lista_parametros[2], lista_parametros[3],
@@ -23,7 +30,7 @@ def crear_juego(lista_parametros):
 def format_juego(diccionario):
     string = ""
     for clave in diccionario:
-        string += clave + ":" + diccionario[clave]
+        string += clave + ":" + str(diccionario[clave])
         if clave == "global_sales":
             string += "\n"
         else:
