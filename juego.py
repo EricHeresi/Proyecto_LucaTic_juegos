@@ -18,3 +18,10 @@ def crear_juego(lista_parametros):
         return crear_juego_parametros(lista_parametros[0], lista_parametros[1],
                                       lista_parametros[2], lista_parametros[3],
                                       lista_parametros[4])
+
+
+def format_juego(diccionario):
+    string = ""
+    for clave in diccionario:
+        string += clave + ":" + diccionario[clave] + ","
+    return string
