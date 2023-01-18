@@ -11,24 +11,24 @@ class ListaJuegos:
 
     def carga_datos(self):
         lista_completa = lectura_csv.lectura_csv()
-        assert len(lista_completa) > 1, ("No se ha podido leer la cabecera " +
-                                         " del fichero")
+        assert len(lista_completa) > 1, ("No se ha podido leer la cabecera "
+                                         + " del fichero")
         for linea in lista_completa[1:]:
             try:
                 self.insercion_juego(linea[1:])
             except ValueError:
-                print("El orden de los datos leidos de un juego no se" +
-                      " corresponde con los que admite el programa")
-        assert len(self.lista) > 0, ("No se ha podido leer bien el formato " +
-                                     "de todos los datos del fichero")
+                print("El orden de los datos leidos de un juego no se"
+                      + " corresponde con los que admite el programa")
+        assert len(self.lista) > 0, ("No se ha podido leer bien el formato "
+                                     + "de todos los datos del fichero")
 
     def filtrar_genero(self, genero):
         lista_aux = []
         for elemento in self.lista:
             if elemento["genre"] == genero:
                 lista_aux.append(juego.format_juego(elemento))
-        assert len(lista_aux) > 0, ("No se han podido encontrar juegos " +
-                                    "del genero " + genero)
+        assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
+                                    + "del genero " + genero)
         self.mostrar_lista_aux(lista_aux)
 
     def mostrar_lista_aux(self, lista_aux):
@@ -60,8 +60,8 @@ class ListaJuegos:
     def existe(self, name, platfrm):
         try:
             game = next(item for item in self.lista if (item["name"] == name
-                                                        and item["platform"] ==
-                                                        platfrm))
+                                                        and item["platform"]
+                                                        == platfrm))
         except StopIteration:
             existe = False
             game = {}
