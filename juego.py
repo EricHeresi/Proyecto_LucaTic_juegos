@@ -27,12 +27,3 @@ def crear_juego(lista_parametros):
                                       int(lista_parametros[2]),
                                       lista_parametros[3],
                                       lista_parametros[4])
-
-
-def format_juego(diccionario):
-    string = ""
-    for clave in diccionario:
-        string += str(diccionario[clave])
-        if clave != "global_sales":
-            string += " | "
-    return string
