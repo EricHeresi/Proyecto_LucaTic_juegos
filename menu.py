@@ -17,7 +17,15 @@ def menu_principal():
 
 
 def pedir_opcion():
-    numero = int(input("Seleccione una opcion: "))
-    while numero < 0 or numero > 13:
-        numero = int(input("Seleccione una opcion correcta: "))
+    opcion = False
+    while (not opcion):
+        try:
+            numero = int(input("Seleccione una opcion: "))
+        except ValueError:
+            print("No es una opción correcta")
+        else:
+            if numero < 0 or numero > 13:
+                print("No es un numero dentro del rango válido")
+            else:
+                opcion = True
     return numero
