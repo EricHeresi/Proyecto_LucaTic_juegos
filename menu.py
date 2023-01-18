@@ -70,7 +70,8 @@ def ask_platform(set_plataformas):
             platform = input("Escribe a plataforma del juego: ")
             assert platform in set_plataformas
         except AssertionError:
-            print("No es una plataforma valida")
+            print("No es una de las plataformas validas")
+            print(set_plataformas)
         else:
             platform_ok = True
     return platform
@@ -83,7 +84,8 @@ def ask_genre(set_generos):
             genre = input("Escribe el genero del juego: ")
             assert genre in set_generos
         except AssertionError:
-            print("No es un genero valido")
+            print("No es uno de los generos validos")
+            print(set_generos)
         else:
             genre_ok = True
     return genre
@@ -96,7 +98,8 @@ def ask_publisher(set_editores):
             publisher = input("Escribe el editor del juego: ")
             assert publisher in set_editores
         except AssertionError:
-            print("No es un editor valido")
+            print("No es uno de los editores valido")
+            print(set_editores)
         else:
             publisher_ok = True
     return publisher
