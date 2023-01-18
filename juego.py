@@ -23,5 +23,9 @@ def crear_juego(lista_parametros):
 def format_juego(diccionario):
     string = ""
     for clave in diccionario:
-        string += clave + ":" + diccionario[clave] + ","
+        string += clave + ":" + diccionario[clave]
+        if clave == "global_sales":
+            string += "\n"
+        else:
+            string += ", "
     return string

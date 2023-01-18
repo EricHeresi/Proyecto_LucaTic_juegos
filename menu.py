@@ -1,4 +1,5 @@
 def menu_principal():
+    print("--------------------------------------------------------")
     print("MENU")
     print("0. Salir")
     print("1. Dar un juego de alta")

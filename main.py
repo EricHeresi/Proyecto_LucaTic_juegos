@@ -12,7 +12,10 @@ def main():
     lista_juegos.carga_datos()
     menu.menu_principal()
     opcion = menu.pedir_opcion()
-    ejecuta_opcion(opcion, lista_juegos)
+    while (opcion != 0):
+        ejecuta_opcion(opcion, lista_juegos)
+        menu.menu_principal()
+        opcion = menu.pedir_opcion()
 
 
 main()
