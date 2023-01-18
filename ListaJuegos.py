@@ -1,13 +1,21 @@
 import lectura_csv
 import juego
+import texttable as tt
 
 
 class ListaJuegos:
+    headers = ["Name", "Platform", "Year", "Genre", "Publiser",
+               "NA Sales", "EU Sales", "JP Sales", "Other",
+               "Global"]
+    col_width = [35, 10, 4, 20, 40, 6, 6, 6, 6, 6]
+
     def __init__(self):
         self.lista = []
+        self.lista_nuevos = []
 
     def insercion_juego(self, lista_aux):
         self.lista.append(juego.crear_juego(lista_aux))
+        self.lista_nuevos.append(juego.crear_juego(lista_aux))
 
     def carga_datos(self):
         lista_completa = lectura_csv.lectura_csv()
@@ -15,7 +23,7 @@ class ListaJuegos:
                                          + " del fichero")
         for linea in lista_completa[1:]:
             try:
-                self.insercion_juego(linea[1:])
+                self.lista.append(juego.crear_juego(linea[1:]))
             except ValueError:
                 print("El orden de los datos leidos de un juego no se"
                       + " corresponde con los que admite el programa")
@@ -24,20 +32,26 @@ class ListaJuegos:
 
     def filtrar_genero(self, genero):
         lista_aux = []
+        tabla = tt.Texttable()
+        tabla.add_row(self.headers)
         for elemento in self.lista:
             if elemento["genre"] == genero:
-                lista_aux.append(juego.format_juego(elemento))
+                lista_aux.append(elemento)
+                tabla.add_row(elemento.values())
         assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
                                     + "del genero " + genero)
-        self.mostrar_lista_aux(lista_aux)
-
-    def mostrar_lista_aux(self, lista_aux):
-        for elemento in lista_aux:
-            print(elemento)
+        tabla.set_cols_width(self.col_width)
+        print(tabla.draw())
+        print("Se han encontrado", len(lista_aux),
+              "juegos cuyo genero sea:", genero)
 
     def mostrar_lista(self):
+        tabla = tt.Texttable()
+        tabla.add_row(self.headers)
         for elemento in self.lista:
-            print(juego.format_juego(elemento))
+            tabla.add_row(elemento.values())
+        tabla.set_cols_width(self.col_width)
+        print(tabla.draw())
 
     def get_editores(self):
         set_editores = set({})
@@ -68,3 +82,6 @@ class ListaJuegos:
         else:
             existe = True
         return existe, game
+
+    def guardar_juegos_nuevos(self):
+        pass

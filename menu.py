@@ -1,9 +1,8 @@
 def menu_principal():
     print("--------------------------------------------------------")
     print("MENU")
-    print("0. Salir")
     print("1. Dar un juego de alta")
-    print("2. Listar juegos de género plataformas")
+    print("2. Listar juegos de género: plataformas")
     print("3. Listar todos los juegos")
     """
     print("4. Listar juegos para consolas de Nintendo")
@@ -17,6 +16,8 @@ def menu_principal():
     print("12. Listar juegos con ventas por encima de la media")
     print("13. Listar juegos lanzados en años pares")
     """
+    print()
+    print("0. Salir")
     print("--------------------------------------------------------")
 
 

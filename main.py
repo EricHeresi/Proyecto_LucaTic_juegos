@@ -1,5 +1,6 @@
 import ListaJuegos as lj
 import menu
+import os
 
 
 def ejecutar_insercion(lista):
@@ -33,9 +34,11 @@ def main():
     menu.menu_principal()
     opcion = menu.pedir_opcion()
     while (opcion != 0):
+        os.system("clear")
         ejecuta_opcion(opcion, lista_juegos)
         menu.menu_principal()
         opcion = menu.pedir_opcion()
+    lista_juegos.guardar_juegos_nuevos()
 
 
 main()

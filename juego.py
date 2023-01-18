@@ -22,17 +22,17 @@ def crear_juego(lista_parametros):
                                       float(lista_parametros[8]),
                                       float(lista_parametros[9]))
     elif len(lista_parametros) == 5:
-        return crear_juego_parametros(lista_parametros[0], lista_parametros[1],
-                                      lista_parametros[2], lista_parametros[3],
+        return crear_juego_parametros(lista_parametros[0],
+                                      lista_parametros[1],
+                                      int(lista_parametros[2]),
+                                      lista_parametros[3],
                                       lista_parametros[4])
 
 
 def format_juego(diccionario):
     string = ""
     for clave in diccionario:
-        string += clave + ":" + str(diccionario[clave])
-        if clave == "global_sales":
-            string += "\n"
-        else:
-            string += ", "
+        string += str(diccionario[clave])
+        if clave != "global_sales":
+            string += " | "
     return string

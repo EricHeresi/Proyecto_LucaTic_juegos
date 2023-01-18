@@ -1,6 +1,7 @@
 import csv
 
 
+# La función lee un archivo csv y retorna una lista
 def lectura_csv():
     lista_aux = []
     try:
