@@ -10,7 +10,7 @@ def crear_juego_parametros(name, platform, year, genre, publisher, na_sales=0,
 def crear_juego(lista_parametros):
     if len(lista_parametros) == 10:
         if lista_parametros[2] == "N/A":
-            lista_parametros[2] = 0
+            lista_parametros[2] = 1901
         return crear_juego_parametros(lista_parametros[0],
                                       lista_parametros[1],
                                       int(lista_parametros[2]),

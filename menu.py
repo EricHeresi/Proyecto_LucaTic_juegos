@@ -67,7 +67,7 @@ def ask_platform(set_plataformas):
     platform_ok = False
     while not platform_ok:
         try:
-            platform = input("Escribe a plataforma del juego: ")
+            platform = input("Escribe la plataforma del juego: ")
             assert platform in set_plataformas
         except AssertionError:
             print("No es una de las plataformas validas")
@@ -98,7 +98,7 @@ def ask_publisher(set_editores):
             publisher = input("Escribe el editor del juego: ")
             assert publisher in set_editores
         except AssertionError:
-            print("No es uno de los editores valido")
+            print("No es uno de los editores validos")
             print(set_editores)
         else:
             publisher_ok = True
