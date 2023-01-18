@@ -34,22 +34,79 @@ def pedir_opcion():
     return numero
 
 
-def pedir_parametros_juego():
-    lista_aux = []
-    lista_aux.append(input("Escribe el nombre del juego: "))
-    lista_aux.append(input("Escribe la plataforma del juego: "))
+def ask_year():
     year_ok = False
     while not year_ok:
         try:
             year = int(input("Escribe cuando salio el juego(year): "))
-            assert year < 2050 and year > 1900, "No se trata de numero valido"
+            assert year < 2024 and year > 1957, "No se trata de numero valido"
         except ValueError:
             print("No es un año")
         except AssertionError as e:
             print(e)
         else:
             year_ok = True
-    lista_aux.append(year)
-    lista_aux.append(input("Escribe el genero del juego: "))
-    lista_aux.append(input("Escribe el publisher del juego: "))
+    return year
+
+
+def ask_name():
+    name_ok = False
+    while not name_ok:
+        try:
+            name = input("Escribe el nombre del juego: ")
+            assert name != ""
+            assert not name.isspace()
+        except AssertionError:
+            print("No es un nombre de juego valido")
+        else:
+            name_ok = True
+    return name
+
+
+def ask_platform(set_plataformas):
+    platform_ok = False
+    while not platform_ok:
+        try:
+            platform = input("Escribe a plataforma del juego: ")
+            assert platform in set_plataformas
+        except AssertionError:
+            print("No es una plataforma valida")
+        else:
+            platform_ok = True
+    return platform
+
+
+def ask_genre(set_generos):
+    genre_ok = False
+    while not genre_ok:
+        try:
+            genre = input("Escribe el genero del juego: ")
+            assert genre in set_generos
+        except AssertionError:
+            print("No es un genero valido")
+        else:
+            genre_ok = True
+    return genre
+
+
+def ask_publisher(set_editores):
+    publisher_ok = False
+    while not publisher_ok:
+        try:
+            publisher = input("Escribe el editor del juego: ")
+            assert publisher in set_editores
+        except AssertionError:
+            print("No es un editor valido")
+        else:
+            publisher_ok = True
+    return publisher
+
+
+def pedir_parametros_juego(set_plataformas, set_generos, set_editores):
+    lista_aux = []
+    lista_aux.append(ask_name())
+    lista_aux.append(ask_platform(set_plataformas))
+    lista_aux.append(ask_year())
+    lista_aux.append(ask_genre(set_generos))
+    lista_aux.append(ask_publisher(set_editores))
     return lista_aux

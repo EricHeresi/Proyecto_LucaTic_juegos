@@ -3,19 +3,27 @@ import menu
 
 
 def ejecuta_opcion(opcion, lista):
-    if opcion == 1:
-        lista_parametros = menu.pedir_parametros_juego()
-        lista.insercion_juego(lista_parametros)
-        print("Insercion completada")
-    if opcion == 2:
-        lista.filtrar_genero("Platform")
-    if opcion == 3:
-        lista.mostrar_lista()
+    try:
+        if opcion == 1:
+            parametros = menu.pedir_parametros_juego(lista.get_plataformas(),
+                                                     lista.get_generos(),
+                                                     lista.get_editores())
+            lista.insercion_juego(parametros)
+            print("Insercion completada")
+        if opcion == 2:
+            lista.filtrar_genero("Platform")
+        if opcion == 3:
+            lista.mostrar_lista()
+    except AssertionError as e:
+        print(e)
 
 
 def main():
     lista_juegos = lj.ListaJuegos()
-    lista_juegos.carga_datos()
+    try:
+        lista_juegos.carga_datos()
+    except AssertionError as e:
+        print(e)
     menu.menu_principal()
     opcion = menu.pedir_opcion()
     while (opcion != 0):
