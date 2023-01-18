@@ -17,6 +17,7 @@ def menu_principal():
     print("12. Listar juegos con ventas por encima de la media")
     print("13. Listar juegos lanzados en años pares")
     """
+    print("--------------------------------------------------------")
 
 
 def pedir_opcion():
@@ -98,8 +99,9 @@ def ask_publisher(set_editores):
             publisher = input("Escribe el editor del juego: ")
             assert publisher in set_editores
         except AssertionError:
-            print("No es uno de los editores validos")
             print(set_editores)
+            print("No es uno de los editores validos(scroll arriba para ver" +
+                  " editores validos)")
         else:
             publisher_ok = True
     return publisher

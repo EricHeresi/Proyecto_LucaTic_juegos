@@ -56,3 +56,15 @@ class ListaJuegos:
         for elemento in self.lista:
             set_generos.add(elemento["genre"])
         return set_generos
+
+    def existe(self, name, platfrm):
+        try:
+            game = next(item for item in self.lista if (item["name"] == name
+                                                        and item["platform"] ==
+                                                        platfrm))
+        except StopIteration:
+            existe = False
+            game = {}
+        else:
+            existe = True
+        return existe, game
