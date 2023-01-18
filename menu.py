@@ -1,5 +1,6 @@
 def menu_principal():
     print("MENU")
+    print("0. Salir")
     print("1. Dar un juego de alta")
     print("2. Listar juegos de género plataformas")
     print("3. Listar todos los juegos")
@@ -16,5 +17,7 @@ def menu_principal():
 
 
 def pedir_opcion():
-    numero = int(input("Seleccione una opcion: "))
+    numero = -1
+    while numero < 0 or numero > 13:
+        numero = int(input("Seleccione una opcion correcta: "))
     return numero
