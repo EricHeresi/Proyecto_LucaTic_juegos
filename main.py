@@ -85,6 +85,8 @@ def ejecuta_opcion(opcion, lista):
             lista.filtrar_encima_europa(lista.obtener_media_europa())
         if opcion == 12:
             lista.filtrar_years_pares()
+        if opcion == 13:
+            lista.escribir_lista_json()
     except AssertionError as e:
         print(e)
 

@@ -1,4 +1,5 @@
 import lectura_csv
+import escribir_json
 import juego
 import texttable as tt
 from operator import itemgetter
@@ -223,3 +224,6 @@ class ListaJuegos:
         existe, juego = self.existe_en_nuevo(nombre, plataforma)
         if existe:
             juego.update(cambios)
+
+    def escribir_lista_json(self):
+        escribir_json.escritura_json(self.lista)

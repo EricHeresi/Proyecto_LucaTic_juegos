@@ -13,6 +13,7 @@ def menu_principal():
     print("10. Listar juegos por género")
     print("11. Listar juegos con ventas por encima de la media")
     print("12. Listar juegos lanzados en años pares")
+    print("13. Guardar lista en data.json")
     print()
     print("0. Salir")
     print("--------------------------------------------------------")
@@ -26,7 +27,7 @@ def pedir_opcion():
         except ValueError:
             print("No es una opción correcta")
         else:
-            if numero < 0 or numero > 13:
+            if numero < 0 or numero > 14:
                 print("No es un numero dentro del rango válido")
             else:
                 opcion = True
