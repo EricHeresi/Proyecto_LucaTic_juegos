@@ -151,7 +151,11 @@ class ListaJuegos:
         suma = 0
         for elemento in self.lista:
             suma += elemento["eu_sales"]
-        return suma/len(self.lista)
+        if len(self.lista) > 0:
+            media = suma/len(self.lista)
+        else:
+            media = 0
+        return media
 
     def filtrar_encima_europa(self, media):
         lista_aux = []
