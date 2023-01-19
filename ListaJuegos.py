@@ -85,3 +85,8 @@ class ListaJuegos:
 
     def guardar_juegos_nuevos(self):
         pass
+
+    def print_editores(self):
+        set_editores = self.get_editores()
+        for editor in set_editores:
+            print(editor)

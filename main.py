@@ -21,6 +21,26 @@ def ejecuta_opcion(opcion, lista):
             lista.filtrar_genero("Platform")
         if opcion == 3:
             lista.mostrar_lista()
+        if opcion == 4:
+            pass
+        if opcion == 5:
+            lista.print_editores()
+        if opcion == 6:
+            pass
+        if opcion == 7:
+            pass
+        if opcion == 8:
+            pass
+        if opcion == 9:
+            pass
+        if opcion == 10:
+            pass
+        if opcion == 11:
+            pass
+        if opcion == 12:
+            pass
+        if opcion == 13:
+            pass
     except AssertionError as e:
         print(e)
 
