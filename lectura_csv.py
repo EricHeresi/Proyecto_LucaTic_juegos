@@ -18,7 +18,7 @@ def lectura_csv(archivo):
     return lista_aux
 
 
-def escritura_csv(lista_dict):        
+def escritura_csv(lista_dict):
     with open("lista_aux.csv", 'w', newline="") as output_file:
         if len(lista_dict) > 0:
             keys = lista_dict[0].keys()

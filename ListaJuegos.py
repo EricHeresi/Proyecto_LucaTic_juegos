@@ -221,6 +221,10 @@ class ListaJuegos:
         existe, juego = self.existe(nombre, plataforma)
         if existe:
             juego.update(cambios)
+            juego["global_sales"] = (juego["na_sales"]
+                                     + juego["eu_sales"]
+                                     + juego["jp_sales"]
+                                     + juego["other_sales"])
         existe, juego = self.existe_en_nuevo(nombre, plataforma)
         if existe:
             juego.update(cambios)
