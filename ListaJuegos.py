@@ -135,3 +135,21 @@ class ListaJuegos:
         assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
                                     + "del siglo 20")
         self.print_tabla(lista_aux)
+
+    def obtener_media_europa(self):
+        suma = 0
+        for elemento in self.lista:
+            suma += elemento["eu_sales"]
+        return suma/len(self.lista)
+
+    def filtrar_encima_europa(self, media):
+        lista_aux = []
+        for elemento in self.lista:
+            if (elemento["eu_sales"] > media):
+                lista_aux.append(elemento)
+        assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
+                                    + "con mayor media que la de europa")
+        self.print_tabla(lista_aux)
+        print("La media es de:", media)
+        print("El numero de juegos con ventas "
+              + "por encima de la media en EU es", len(lista_aux))

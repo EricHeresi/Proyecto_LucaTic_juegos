@@ -45,7 +45,7 @@ def ejecuta_opcion(opcion, lista):
         if opcion == 11:
             pass
         if opcion == 12:
-            pass
+            lista.filtrar_encima_europa(lista.obtener_media_europa())
         if opcion == 13:
             pass
     except AssertionError as e:
