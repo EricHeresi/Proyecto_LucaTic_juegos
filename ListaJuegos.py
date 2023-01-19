@@ -1,6 +1,7 @@
 import lectura_csv
 import juego
 import texttable as tt
+from operator import itemgetter
 
 
 class ListaJuegos:
@@ -85,3 +86,12 @@ class ListaJuegos:
 
     def guardar_juegos_nuevos(self):
         pass
+
+    def region_best_five(self, region):
+        lista_aux = sorted(self.lista, key=itemgetter(region), reverse=True)
+        tabla = tt.Texttable()
+        tabla.add_row(self.headers)
+        for elemento in lista_aux[0:5]:
+            tabla.add_row(elemento.values())
+        tabla.set_cols_width(self.col_width)
+        print(tabla.draw())

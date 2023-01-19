@@ -21,6 +21,8 @@ def ejecuta_opcion(opcion, lista):
             lista.filtrar_genero("Platform")
         if opcion == 3:
             lista.mostrar_lista()
+        if opcion == 6:
+            lista.region_best_five(menu.pedir_region())
     except AssertionError as e:
         print(e)
 

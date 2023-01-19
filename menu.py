@@ -29,7 +29,7 @@ def pedir_opcion():
         except ValueError:
             print("No es una opción correcta")
         else:
-            if numero < 0 or numero > 3:
+            if numero < 0 or numero > 13:
                 print("No es un numero dentro del rango válido")
             else:
                 opcion = True
@@ -116,3 +116,21 @@ def pedir_parametros_juego(set_plataformas, set_generos, set_editores):
     lista_aux.append(ask_genre(set_generos))
     lista_aux.append(ask_publisher(set_editores))
     return lista_aux
+
+
+def ask_region(lista_region):
+    publisher_ok = False
+    while not publisher_ok:
+        try:
+            publisher = input("Escribe la region de la que obtener datos: ")
+            assert publisher in lista_region
+        except AssertionError:
+            print(lista_region)
+            print("No es una de las regiones validas")
+        else:
+            publisher_ok = True
+    return publisher
+
+
+def pedir_region():
+    return ask_region(["na_sales", "eu_sales", "jp_sales", "other_sales"])
