@@ -21,6 +21,15 @@ def ejecuta_opcion(opcion, lista):
             lista.filtrar_genero("Platform")
         if opcion == 3:
             lista.mostrar_lista()
+        if opcion == 4:
+            menu.menu_nintendo()
+            opcionNintendo = menu.pedir_opcion_nintendo()
+            if opcionNintendo == 1:
+                lista.filtrar_publisher("Nintendo")
+            if opcionNintendo == 2:
+                lista.filtrar_consolas_nintendo()
+            if opcionNintendo == 0:
+                print("\nVolviendo al menú principal.\n")
     except AssertionError as e:
         print(e)
 

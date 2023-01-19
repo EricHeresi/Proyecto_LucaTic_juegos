@@ -85,3 +85,35 @@ class ListaJuegos:
 
     def guardar_juegos_nuevos(self):
         pass
+
+    def filtrar_publisher(self, publisher):
+        lista_aux = []
+        tabla = tt.Texttable()
+        tabla.add_row(self.headers)
+        for elemento in self.lista:
+            if elemento["publisher"] == publisher:
+                lista_aux.append(elemento)
+                tabla.add_row(elemento.values())
+        assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
+                                    + "del publisher " + publisher)
+        tabla.set_cols_width(self.col_width)
+        print(tabla.draw())
+        print("Se han encontrado", len(lista_aux),
+              "juegos publicados por:", publisher)
+
+    def filtrar_consolas_nintendo(self):
+        consolas_nintendo = ["Wii", "NES", "GB", "DS",
+                             "SNES", "GBA", "3DS", "N64", "GC", "WiiU"]
+        lista_aux = []
+        tabla = tt.Texttable()
+        tabla.add_row(self.headers)
+        for elemento in self.lista:
+            if elemento["platform"] in consolas_nintendo:
+                lista_aux.append(elemento)
+                tabla.add_row(elemento.values())
+        assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
+                                    + "de consolas de Nintendo.")
+        tabla.set_cols_width(self.col_width)
+        print(tabla.draw())
+        print("Se han encontrado", len(lista_aux),
+              "juegos para consolas de Nintendo.")

@@ -4,8 +4,8 @@ def menu_principal():
     print("1. Dar un juego de alta")
     print("2. Listar juegos de género: plataformas")
     print("3. Listar todos los juegos")
-    """
     print("4. Listar juegos para consolas de Nintendo")
+    """
     print("5. Listar editores")
     print("6. Listar los 5 juegos más vendidos del mundo")
     print("7. Listar juegos del siglo XX")
@@ -29,7 +29,7 @@ def pedir_opcion():
         except ValueError:
             print("No es una opción correcta")
         else:
-            if numero < 0 or numero > 3:
+            if numero < 0 or numero > 4:
                 print("No es un numero dentro del rango válido")
             else:
                 opcion = True
@@ -116,3 +116,28 @@ def pedir_parametros_juego(set_plataformas, set_generos, set_editores):
     lista_aux.append(ask_genre(set_generos))
     lista_aux.append(ask_publisher(set_editores))
     return lista_aux
+
+
+def menu_nintendo():
+    print("--------------------------------------------------------")
+    print("MENU NINTENDO")
+    print("1. Listar juegos publicados por Nintendo")
+    print("2. Listar juegos para consolas de Nintendo")
+    print()
+    print("0. Volver")
+    print("--------------------------------------------------------")
+
+
+def pedir_opcion_nintendo():
+    opcion = False
+    while (not opcion):
+        try:
+            numero = int(input("Seleccione una opcion: "))
+        except ValueError:
+            print("No es una opción correcta")
+        else:
+            if numero < 0 or numero > 2:
+                print("No es un numero dentro del rango válido")
+            else:
+                opcion = True
+    return numero
