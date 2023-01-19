@@ -135,3 +135,14 @@ class ListaJuegos:
         assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
                                     + "del siglo 20")
         self.print_tabla(lista_aux)
+
+    def filtrar_years_pares(self):
+        lista_aux = []
+        for elemento in self.lista:
+            if (elemento["year"] % 2 == 0):
+                lista_aux.append(elemento)
+        assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
+                                    + "en años pares.")
+        self.print_tabla(lista_aux)
+        print("Se han encontrado", len(lista_aux),
+              "juegos lanzados en años pares.")

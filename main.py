@@ -48,7 +48,7 @@ def ejecuta_opcion(opcion, lista):
         if opcion == 12:
             pass
         if opcion == 13:
-            pass
+            lista.filtrar_years_pares()
     except AssertionError as e:
         print(e)
 
