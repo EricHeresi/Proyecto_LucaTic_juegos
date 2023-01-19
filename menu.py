@@ -5,7 +5,6 @@ def menu_principal():
     print("2. Listar juegos de género: plataformas")
     print("3. Listar todos los juegos")
     print("4. Listar juegos para consolas de Nintendo")
-    """
     print("5. Listar editores")
     print("6. Listar los 5 juegos más vendidos del mundo")
     print("7. Listar juegos del siglo XX")
@@ -15,7 +14,6 @@ def menu_principal():
     print("11. Listar juegos por género")
     print("12. Listar juegos con ventas por encima de la media")
     print("13. Listar juegos lanzados en años pares")
-    """
     print()
     print("0. Salir")
     print("--------------------------------------------------------")
@@ -29,7 +27,7 @@ def pedir_opcion():
         except ValueError:
             print("No es una opción correcta")
         else:
-            if numero < 0 or numero > 4:
+            if numero < 0 or numero > 13:
                 print("No es un numero dentro del rango válido")
             else:
                 opcion = True
@@ -141,3 +139,21 @@ def pedir_opcion_nintendo():
             else:
                 opcion = True
     return numero
+
+
+def ask_region(lista_region):
+    publisher_ok = False
+    while not publisher_ok:
+        try:
+            publisher = input("Escribe la region de la que obtener datos: ")
+            assert publisher in lista_region
+        except AssertionError:
+            print(lista_region)
+            print("No es una de las regiones validas")
+        else:
+            publisher_ok = True
+    return publisher
+
+
+def pedir_region():
+    return ask_region(["na_sales", "eu_sales", "jp_sales", "other_sales"])

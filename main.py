@@ -30,6 +30,24 @@ def ejecuta_opcion(opcion, lista):
                 lista.filtrar_consolas_nintendo()
             if opcionNintendo == 0:
                 print("\nVolviendo al menú principal.\n")
+        if opcion == 5:
+            lista.print_editores()
+        if opcion == 6:
+            lista.region_best_five(menu.pedir_region())
+        if opcion == 7:
+            pass
+        if opcion == 8:
+            pass
+        if opcion == 9:
+            pass
+        if opcion == 10:
+            pass
+        if opcion == 11:
+            pass
+        if opcion == 12:
+            pass
+        if opcion == 13:
+            pass
     except AssertionError as e:
         print(e)
 
