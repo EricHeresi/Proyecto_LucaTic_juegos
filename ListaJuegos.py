@@ -95,3 +95,8 @@ class ListaJuegos:
             tabla.add_row(elemento.values())
         tabla.set_cols_width(self.col_width)
         print(tabla.draw())
+
+    def print_editores(self):
+        set_editores = self.get_editores()
+        for editor in set_editores:
+            print(editor)
