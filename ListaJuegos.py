@@ -164,3 +164,6 @@ class ListaJuegos:
         print("La media es de:", media)
         print("El numero de juegos con ventas "
               + "por encima de la media en EU es", len(lista_aux))
+
+    def eliminar_juego(self, dict_juego):
+        self.lista.remove(dict_juego)

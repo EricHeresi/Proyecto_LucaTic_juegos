@@ -10,6 +10,8 @@ def ejecutar_insercion(lista):
     existe_juego = lista.existe(parametros[0], parametros[1])
     assert not existe_juego[0], "ERROR: Ya existe ese juego en esa plataforma"
     lista.insercion_juego(parametros)
+    print("Se ha insertado en el sistema el juego:")
+    print(parametros)
     print("Insercion completada")
 
 
@@ -28,6 +30,22 @@ def ejecutar_editar_juego(lista):
         else:
             print()
             print("No se ha realizado ningun cambio en el sistema")
+    else:
+        print()
+        print("No existe el juego", nombre, "para la plataforma", plataforma)
+
+
+def ejecutar_eliminar(lista):
+    nombre, plataforma = menu.pedir_juego(lista.get_plataformas())
+    existe, dict_juego = lista.existe(nombre, plataforma)
+    if existe:
+        if menu.pedir_confirmacion_eliminar(dict_juego):
+            lista.eliminar_juego(dict_juego)
+            print("...")
+            print("Se ha eliminado", nombre, "con exito")
+        else:
+            print()
+            print("Operacion abortada")
     else:
         print()
         print("No existe el juego", nombre, "para la plataforma", plataforma)
@@ -59,7 +77,7 @@ def ejecuta_opcion(opcion, lista):
         if opcion == 8:
             ejecutar_editar_juego(lista)
         if opcion == 9:
-            pass
+            ejecutar_eliminar(lista)
         if opcion == 10:
             print(lista.get_generos())
             lista.filtrar_genero(menu.ask_genre(lista.get_generos()))
