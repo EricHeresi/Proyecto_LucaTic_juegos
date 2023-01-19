@@ -1,21 +1,38 @@
 def menu_principal():
     print("--------------------------------------------------------")
-    print("MENU")
-    print("1. Dar un juego de alta")
-    print("2. Listar juegos de género: plataformas")
-    print("3. Listar todos los juegos")
-    print("4. Listar juegos para consolas de Nintendo")
-    print("5. Listar editores")
-    print("6. Listar los 5 juegos más vendidos del mundo")
-    print("7. Listar juegos del siglo XX")
-    print("8. Editar un juego")
-    print("9. Borrar un juego")
-    print("10. Listar juegos por género")
-    print("11. Listar juegos con ventas por encima de la media")
-    print("12. Listar juegos lanzados en años pares")
-    print("13. Guardar lista en data.json")
+    print("MENU PRINCIPAL")
+    print("1. Editar datos de juegos.")
+    print("2. Generar informes de juegos")
     print()
     print("0. Salir")
+    print("--------------------------------------------------------")
+
+
+def menu_edicion():
+    print("--------------------------------------------------------")
+    print("MENU EDICION")
+    print("1. Dar un juego de alta")
+    print("2. Editar un juego")
+    print("3. Borrar un juego")
+    print()
+    print("0. Volver al menú principal")
+    print("--------------------------------------------------------")
+
+
+def menu_informe():
+    print("--------------------------------------------------------")
+    print("MENU INFORMES")
+    print("1. Listar juegos de género: plataformas")
+    print("2. Listar todos los juegos")
+    print("3. Listar juegos para consolas de Nintendo")
+    print("4. Listar editores")
+    print("5. Listar los 5 juegos más vendidos del mundo")
+    print("6. Listar juegos del siglo XX")
+    print("7. Listar juegos por género")
+    print("8. Listar juegos con ventas por encima de la media")
+    print("9. Listar juegos lanzados en años pares")
+    print()
+    print("0. Volver al menú principal")
     print("--------------------------------------------------------")
 
 
@@ -27,7 +44,37 @@ def pedir_opcion():
         except ValueError:
             print("No es una opción correcta")
         else:
-            if numero < 0 or numero > 14:
+            if numero < 0 or numero > 2:
+                print("No es un numero dentro del rango válido")
+            else:
+                opcion = True
+    return numero
+
+
+def pedir_opcion_edicion():
+    opcion = False
+    while (not opcion):
+        try:
+            numero = int(input("Seleccione una opcion: "))
+        except ValueError:
+            print("No es una opción correcta")
+        else:
+            if numero < 0 or numero > 3:
+                print("No es un numero dentro del rango válido")
+            else:
+                opcion = True
+    return numero
+
+
+def pedir_opcion_informe():
+    opcion = False
+    while (not opcion):
+        try:
+            numero = int(input("Seleccione una opcion: "))
+        except ValueError:
+            print("No es una opción correcta")
+        else:
+            if numero < 0 or numero > 9:
                 print("No es un numero dentro del rango válido")
             else:
                 opcion = True

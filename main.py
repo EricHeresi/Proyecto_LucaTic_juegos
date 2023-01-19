@@ -54,39 +54,47 @@ def ejecutar_eliminar(lista):
 def ejecuta_opcion(opcion, lista):
     try:
         if opcion == 1:
-            ejecutar_insercion(lista)
-        if opcion == 2:
-            lista.filtrar_genero("Platform")
-        if opcion == 3:
-            lista.mostrar_lista()
-        if opcion == 4:
-            menu.menu_nintendo()
-            opcionNintendo = menu.pedir_opcion_nintendo()
-            if opcionNintendo == 1:
-                lista.filtrar_publisher("Nintendo")
-            if opcionNintendo == 2:
-                lista.filtrar_consolas_nintendo()
-            if opcionNintendo == 0:
+            menu.menu_edicion()
+            opcionEdicion = menu.pedir_opcion_edicion()
+            if opcionEdicion == 1:
+                ejecutar_insercion(lista)
+            if opcionEdicion == 2:
+                ejecutar_editar_juego(lista)
+            if opcionEdicion == 3:
+                ejecutar_eliminar(lista)
+            if opcionEdicion == 0:
                 print("\nVolviendo al menú principal.\n")
-        if opcion == 5:
-            lista.print_editores()
-        if opcion == 6:
-            lista.region_best_five(menu.pedir_region())
-        if opcion == 7:
-            lista.filtrar_year_between(1900, 2001)
-        if opcion == 8:
-            ejecutar_editar_juego(lista)
-        if opcion == 9:
-            ejecutar_eliminar(lista)
-        if opcion == 10:
-            print(lista.get_generos())
-            lista.filtrar_genero(menu.ask_genre(lista.get_generos()))
-        if opcion == 11:
-            lista.filtrar_encima_europa(lista.obtener_media_europa())
-        if opcion == 12:
-            lista.filtrar_years_pares()
-        if opcion == 13:
-            lista.escribir_lista_json()
+        if opcion == 2:
+            menu.menu_informe()
+            opcionInforme = menu.pedir_opcion_informe()
+            if opcionInforme == 1:
+                lista.filtrar_genero("Platform")
+            if opcionInforme == 2:
+                lista.mostrar_lista()
+            if opcionInforme == 3:
+                menu.menu_nintendo()
+                opcionNintendo = menu.pedir_opcion_nintendo()
+                if opcionNintendo == 1:
+                    lista.filtrar_publisher("Nintendo")
+                if opcionNintendo == 2:
+                    lista.filtrar_consolas_nintendo()
+                if opcionNintendo == 0:
+                    print("\nVolviendo al menú principal.\n")
+            if opcionInforme == 4:
+                lista.print_editores()
+            if opcionInforme == 5:
+                lista.region_best_five(menu.pedir_region())
+            if opcionInforme == 6:
+                lista.filtrar_year_between(1900, 2001)
+            if opcionInforme == 7:
+                print(lista.get_generos())
+                lista.filtrar_genero(menu.ask_genre(lista.get_generos()))
+            if opcionInforme == 8:
+                lista.filtrar_encima_europa(lista.obtener_media_europa())
+            if opcionInforme == 9:
+                lista.filtrar_years_pares()
+            if opcionInforme == 0:
+                print("\nVolviendo al menú principal.\n")
     except AssertionError as e:
         print(e)
 
