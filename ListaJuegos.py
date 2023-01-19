@@ -107,16 +107,12 @@ class ListaJuegos:
 
     def filtrar_publisher(self, publisher):
         lista_aux = []
-        tabla = tt.Texttable()
-        tabla.add_row(self.headers)
         for elemento in self.lista:
             if elemento["publisher"] == publisher:
                 lista_aux.append(elemento)
-                tabla.add_row(elemento.values())
         assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
                                     + "del publisher " + publisher)
-        tabla.set_cols_width(self.col_width)
-        print(tabla.draw())
+        self.print_tabla(lista_aux)
         print("Se han encontrado", len(lista_aux),
               "juegos publicados por:", publisher)
 
@@ -124,22 +120,18 @@ class ListaJuegos:
         consolas_nintendo = ["Wii", "NES", "GB", "DS",
                              "SNES", "GBA", "3DS", "N64", "GC", "WiiU"]
         lista_aux = []
-        tabla = tt.Texttable()
-        tabla.add_row(self.headers)
         for elemento in self.lista:
             if elemento["platform"] in consolas_nintendo:
                 lista_aux.append(elemento)
-                tabla.add_row(elemento.values())
         assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
                                     + "de consolas de Nintendo.")
-        tabla.set_cols_width(self.col_width)
-        print(tabla.draw())
+        self.print_tabla(lista_aux)
         print("Se han encontrado", len(lista_aux),
               "juegos para consolas de Nintendo.")
 
     def region_best_five(self, region):
         lista_aux = sorted(self.lista, key=itemgetter(region), reverse=True)
-        self.print_tabla(lista_aux)
+        self.print_tabla(lista_aux[0:5])
 
     def print_editores(self):
         set_editores = self.get_editores()
@@ -149,10 +141,29 @@ class ListaJuegos:
     def print_tabla(self, lista):
         tabla = tt.Texttable()
         tabla.add_row(self.headers)
-        for elemento in lista:
-            tabla.add_row(elemento.values())
-        tabla.set_cols_width(self.col_width)
-        print(tabla.draw())
+        cont = 0
+        iterador = 0
+        salir = False
+        while not salir:
+            cont += 1
+            tabla.add_row(lista[iterador].values())
+            if cont == 50:
+                tabla.set_cols_width(self.col_width)
+                print(tabla.draw())
+                print("Mostrando elementos", iterador-48, "-", iterador+1)
+                tecla = (input("Presiona Q para salir: ")).lower()
+                if tecla == "q":
+                    salir = True
+                else:
+                    cont = 0
+                    tabla = tt.Texttable()
+                    tabla.add_row(self.headers)
+            iterador += 1
+            if iterador >= len(lista):
+                salir = True
+        if cont < 50:
+            tabla.set_cols_width(self.col_width)
+            print(tabla.draw())
 
     def filtrar_year_between(self, year_min, year_max):
         lista_aux = []
@@ -162,6 +173,8 @@ class ListaJuegos:
         assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
                                     + "del siglo 20")
         self.print_tabla(lista_aux)
+        print("Se han encontrado", len(lista_aux),
+              "juegos del siglo XX.")
 
     def filtrar_years_pares(self):
         lista_aux = []
