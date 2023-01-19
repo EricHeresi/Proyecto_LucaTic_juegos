@@ -7,6 +7,22 @@ import ListaJuegos as lj
 
 class TestProyecto(unittest.TestCase):
 
+    def test_pedir_opcion(self):
+        valor = menu.pedir_opcion()
+        self.assertEqual(type(valor), int)
+        self.assertTrue(valor > 0)
+        self.assertTrue(valor < 13)
+
+    def test_ask_name(self):
+        valor = menu.ask_name()
+        self.assertEqual(type(valor), str)
+        self.assertTrue(len(valor) > 0)
+
+    def test_ask_platform(self):
+        valor = menu.ask_platform({'Wii'})
+        self.assertEqual(type(valor), str)
+        self.assertTrue(len(valor) > 0)
+
     def test_lectura_csv(self):
         self.assertEqual(type(lectura_csv.lectura_csv()), type(list()))
         self.assertEqual(type(lectura_csv.lectura_csv()[0]),
@@ -56,6 +72,22 @@ class TestProyecto(unittest.TestCase):
     def test_obtener_media_europa(self):
         lista = lj.ListaJuegos()
         self.assertEqual(type(lista.obtener_media_europa()), float)
+
+    def test_get_editores(self):
+        lista = lj.ListaJuegos()
+        self.assertEqual(type(lista.get_editores()), set)
+
+    def test_get_plataformas(self):
+        lista = lj.ListaJuegos()
+        self.assertEqual(type(lista.get_plataformas()), set)
+
+    def test_get_generos(self):
+        lista = lj.ListaJuegos()
+        self.assertEqual(type(lista.get_generos()), set)
+
+    def testexiste(self):
+        lista = lj.ListaJuegos()
+        self.assertEqual(type(lista.existe('Wii Sports', 'Platform')), tuple)
 
 
 if __name__ == '__main__':
