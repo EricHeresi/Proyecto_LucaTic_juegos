@@ -33,26 +33,17 @@ class ListaJuegos:
 
     def filtrar_genero(self, genero):
         lista_aux = []
-        tabla = tt.Texttable()
-        tabla.add_row(self.headers)
         for elemento in self.lista:
             if elemento["genre"] == genero:
                 lista_aux.append(elemento)
-                tabla.add_row(elemento.values())
         assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
                                     + "del genero " + genero)
-        tabla.set_cols_width(self.col_width)
-        print(tabla.draw())
+        self.print_tabla(lista_aux)
         print("Se han encontrado", len(lista_aux),
               "juegos cuyo genero sea:", genero)
 
     def mostrar_lista(self):
-        tabla = tt.Texttable()
-        tabla.add_row(self.headers)
-        for elemento in self.lista:
-            tabla.add_row(elemento.values())
-        tabla.set_cols_width(self.col_width)
-        print(tabla.draw())
+        self.print_tabla(self.lista)
 
     def get_editores(self):
         set_editores = set({})
@@ -89,14 +80,17 @@ class ListaJuegos:
 
     def region_best_five(self, region):
         lista_aux = sorted(self.lista, key=itemgetter(region), reverse=True)
-        tabla = tt.Texttable()
-        tabla.add_row(self.headers)
-        for elemento in lista_aux[0:5]:
-            tabla.add_row(elemento.values())
-        tabla.set_cols_width(self.col_width)
-        print(tabla.draw())
+        self.print_tabla(lista_aux)
 
     def print_editores(self):
         set_editores = self.get_editores()
         for editor in set_editores:
             print(editor)
+
+    def print_tabla(self, lista):
+        tabla = tt.Texttable()
+        tabla.add_row(self.headers)
+        for elemento in lista:
+            tabla.add_row(elemento.values())
+        tabla.set_cols_width(self.col_width)
+        print(tabla.draw())
