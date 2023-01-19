@@ -61,13 +61,11 @@ def ejecuta_opcion(opcion, lista):
         if opcion == 9:
             pass
         if opcion == 10:
-            pass
-        if opcion == 11:
             print(lista.get_generos())
             lista.filtrar_genero(menu.ask_genre(lista.get_generos()))
-        if opcion == 12:
+        if opcion == 11:
             lista.filtrar_encima_europa(lista.obtener_media_europa())
-        if opcion == 13:
+        if opcion == 12:
             lista.filtrar_years_pares()
     except AssertionError as e:
         print(e)
