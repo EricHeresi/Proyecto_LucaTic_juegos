@@ -14,6 +14,7 @@ def menu_edicion():
     print("1. Dar un juego de alta")
     print("2. Editar un juego")
     print("3. Borrar un juego")
+    print("4. Escribir la lista de juegos en data.json")
     print()
     print("0. Volver al menú principal")
     print("--------------------------------------------------------")
@@ -59,7 +60,7 @@ def pedir_opcion_edicion():
         except ValueError:
             print("No es una opción correcta")
         else:
-            if numero < 0 or numero > 3:
+            if numero < 0 or numero > 4:
                 print("No es un numero dentro del rango válido")
             else:
                 opcion = True
@@ -192,6 +193,7 @@ def ask_region(lista_region):
     region_ok = False
     while not region_ok:
         try:
+            print(lista_region)
             region = (input("Escribe de que region obtener datos: ")).lower()
             assert region in lista_region
         except AssertionError:

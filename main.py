@@ -62,8 +62,10 @@ def ejecuta_opcion(opcion, lista):
                 ejecutar_editar_juego(lista)
             if opcionEdicion == 3:
                 ejecutar_eliminar(lista)
+            if opcionEdicion == 4:
+                lista.escribir_lista_json()
             if opcionEdicion == 0:
-                print("\nVolviendo al menú principal.\n")
+                os.system("clear")
         if opcion == 2:
             menu.menu_informe()
             opcionInforme = menu.pedir_opcion_informe()
@@ -94,7 +96,7 @@ def ejecuta_opcion(opcion, lista):
             if opcionInforme == 9:
                 lista.filtrar_years_pares()
             if opcionInforme == 0:
-                print("\nVolviendo al menú principal.\n")
+                os.system("clear")
     except AssertionError as e:
         print(e)
 

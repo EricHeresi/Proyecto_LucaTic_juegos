@@ -60,6 +60,7 @@ class ListaJuegos:
 
     def mostrar_lista(self):
         self.print_tabla(self.lista)
+        print("En el sistema hay", len(self.lista), "juegos")
 
     def get_editores(self):
         set_editores = set({})
