@@ -132,3 +132,69 @@ def ask_region(lista_region):
 
 def pedir_region():
     return ask_region(["na_sales", "eu_sales", "jp_sales", "other_sales"])
+
+
+def pedir_juego(set_plataformas):
+    nombre = ask_name()
+    plataforma = ask_platform(set_plataformas)
+    return nombre, plataforma
+
+
+def ask_sales():
+    sales_ok = False
+    while not sales_ok:
+        try:
+            sales = float(input("Introduce el numero de ventas(millones): "))
+            assert sales >= 0.0, "Los valores negtivos nos son validos"
+        except ValueError:
+            print("No es un valor numerico")
+        except AssertionError as e:
+            print(e)
+        else:
+            sales_ok = True
+    return sales
+
+
+def pedir_cambios(set_generos, set_editores):
+    new_dict = dict({})
+    yes = (input("Escribe [Y] para cambiar el año: ")).lower()
+    if yes == "y":
+        new_year = ask_year()
+        new_dict["year"] = new_year
+    yes = (input("Escribe [Y] para cambiar el genero: ")).lower()
+    if yes == "y":
+        new_genre = ask_genre(set_generos)
+        new_dict["genre"] = new_genre
+    yes = (input("Escribe [Y] para cambiar el editor: ")).lower()
+    if yes == "y":
+        new_publisher = ask_publisher(set_editores)
+        new_dict["publisher"] = new_publisher
+    yes = (input("Escribe [Y] para cambiar las ventas en NA: ")).lower()
+    if yes == "y":
+        new_na = ask_sales()
+        new_dict["na_sales"] = new_na
+    yes = (input("Escribe [Y] para cambiar las ventas en EU: ")).lower()
+    if yes == "y":
+        new_eu = ask_sales()
+        new_dict["eu_sales"] = new_eu
+    yes = (input("Escribe [Y] para cambiar las ventas en JP: ")).lower()
+    if yes == "y":
+        new_jp = ask_sales()
+        new_dict["jp_sales"] = new_jp
+        yes = (input("Escribe [Y] para cambiar las otras ventas: ")).lower()
+    if yes == "y":
+        new_other = ask_sales()
+        new_dict["other_sales"] = new_other
+    return new_dict
+
+
+def pedir_confirmacion_cambios(juego_original, cambios):
+    print("Del juego original:")
+    print(juego_original)
+    print("Se van a modificar los siguientes campos:")
+    print(cambios)
+    yes = (input("Confirmar la operacion? [Y]: ")).lower()
+    if yes == "y" or yes == "yes":
+        return True
+    else:
+        return False
