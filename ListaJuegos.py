@@ -126,3 +126,12 @@ class ListaJuegos:
             tabla.add_row(elemento.values())
         tabla.set_cols_width(self.col_width)
         print(tabla.draw())
+
+    def filtrar_year_between(self, year_min, year_max):
+        lista_aux = []
+        for elemento in self.lista:
+            if (elemento["year"] > year_min and elemento["year"] < year_max):
+                lista_aux.append(elemento)
+        assert len(lista_aux) > 0, ("No se han podido encontrar juegos "
+                                    + "del siglo 20")
+        self.print_tabla(lista_aux)

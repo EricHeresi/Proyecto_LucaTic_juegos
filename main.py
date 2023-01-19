@@ -35,7 +35,7 @@ def ejecuta_opcion(opcion, lista):
         if opcion == 6:
             lista.region_best_five(menu.pedir_region())
         if opcion == 7:
-            pass
+            lista.filtrar_year_between(1900, 2001)
         if opcion == 8:
             pass
         if opcion == 9:
@@ -65,6 +65,7 @@ def main():
         ejecuta_opcion(opcion, lista_juegos)
         menu.menu_principal()
         opcion = menu.pedir_opcion()
+    os.system("clear")
     lista_juegos.guardar_juegos_nuevos()
 
 
