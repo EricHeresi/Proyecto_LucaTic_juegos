@@ -43,7 +43,8 @@ def ejecuta_opcion(opcion, lista):
         if opcion == 10:
             pass
         if opcion == 11:
-            pass
+            print(lista.get_generos())
+            lista.filtrar_genero(menu.ask_genre(lista.get_generos()))
         if opcion == 12:
             pass
         if opcion == 13:
