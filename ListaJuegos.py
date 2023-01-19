@@ -19,12 +19,27 @@ class ListaJuegos:
         self.lista_nuevos.append(juego.crear_juego(lista_aux))
 
     def carga_datos(self):
-        lista_completa = lectura_csv.lectura_csv()
+        lista_completa = lectura_csv.lectura_csv("vgsales.csv")
         assert len(lista_completa) > 1, ("No se ha podido leer la cabecera "
-                                         + " del fichero")
+                                         + " del fichero principal")
         for linea in lista_completa[1:]:
             try:
                 self.lista.append(juego.crear_juego(linea[1:]))
+            except ValueError:
+                print("El orden de los datos leidos de un juego no se"
+                      + " corresponde con los que admite el programa")
+        assert len(self.lista) > 0, ("No se ha podido leer bien el formato "
+                                     + "de todos los datos del fichero")
+
+    def carga_datos_agregados(self):
+        fichero = "lista_aux.csv"
+        lista_completa = lectura_csv.lectura_csv(fichero)
+        assert len(lista_completa) > 1, ("No se han encontrado juegos extra "
+                                         + "para cargar en", fichero)
+        for linea in lista_completa[1:]:
+            try:
+                self.lista.append(juego.crear_juego(linea))
+                self.lista_nuevos.append(juego.crear_juego(linea))
             except ValueError:
                 print("El orden de los datos leidos de un juego no se"
                       + " corresponde con los que admite el programa")
@@ -75,8 +90,20 @@ class ListaJuegos:
             existe = True
         return existe, game
 
+    def existe_en_nuevo(self, name, platfrm):
+        try:
+            game = next(gm for gm in self.lista_nuevos if (gm["name"] == name
+                                                           and gm["platform"]
+                                                           == platfrm))
+        except StopIteration:
+            existe = False
+            game = {}
+        else:
+            existe = True
+        return existe, game
+
     def guardar_juegos_nuevos(self):
-        pass
+        lectura_csv.escritura_csv(self.lista_nuevos)
 
     def filtrar_publisher(self, publisher):
         lista_aux = []
@@ -154,7 +181,7 @@ class ListaJuegos:
         if len(self.lista) > 0:
             media = suma/len(self.lista)
         else:
-            media = 0
+            media = 0.0
         return media
 
     def filtrar_encima_europa(self, media):
@@ -170,4 +197,16 @@ class ListaJuegos:
               + "por encima de la media en EU es", len(lista_aux))
 
     def eliminar_juego(self, dict_juego):
-        self.lista.remove(dict_juego)
+        try:
+            self.lista.remove(dict_juego)
+            self.lista_nuevos.remove(dict_juego)
+        except ValueError:
+            pass
+
+    def update_juego(self, nombre, plataforma, cambios):
+        existe, juego = self.existe(nombre, plataforma)
+        if existe:
+            juego.update(cambios)
+        existe, juego = self.existe_en_nuevo(nombre, plataforma)
+        if existe:
+            juego.update(cambios)

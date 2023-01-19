@@ -22,7 +22,7 @@ def ejecutar_editar_juego(lista):
         cambios = menu.pedir_cambios(lista.get_generos(),
                                      lista.get_editores())
         if menu.pedir_confirmacion_cambios(dict_juego, cambios):
-            dict_juego.update(cambios)
+            lista.update_juego(nombre, plataforma, cambios)
             print("...")
             print("Se han guardado los cambios")
             print("Nuevo juego:")
@@ -93,6 +93,7 @@ def main():
     lista_juegos = lj.ListaJuegos()
     try:
         lista_juegos.carga_datos()
+        lista_juegos.carga_datos_agregados()
     except AssertionError as e:
         print(e)
     menu.menu_principal()
