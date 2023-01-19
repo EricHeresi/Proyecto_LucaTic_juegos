@@ -53,6 +53,10 @@ class TestProyecto(unittest.TestCase):
             "Wii Sports", "Wii", 2000, "Platform", "Nintendo",
             0, 0, 0, 0, 0)), dict)
 
+    def test_obtener_media_europa(self):
+        lista = lj.ListaJuegos()
+        self.assertEqual(type(lista.obtener_media_europa()), float)
+
 
 if __name__ == '__main__':
     unittest.main()

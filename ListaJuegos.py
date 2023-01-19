@@ -154,7 +154,7 @@ class ListaJuegos:
         if len(self.lista) > 0:
             media = suma/len(self.lista)
         else:
-            media = 0
+            media = 0.0
         return media
 
     def filtrar_encima_europa(self, media):
