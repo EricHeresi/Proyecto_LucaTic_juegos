@@ -141,21 +141,30 @@ def pedir_opcion_nintendo():
 
 
 def ask_region(lista_region):
-    publisher_ok = False
-    while not publisher_ok:
+    region_ok = False
+    while not region_ok:
         try:
-            publisher = input("Escribe la region de la que obtener datos: ")
-            assert publisher in lista_region
+            region = (input("Escribe de que region obtener datos: ")).lower()
+            assert region in lista_region
         except AssertionError:
             print(lista_region)
             print("No es una de las regiones validas")
         else:
-            publisher_ok = True
-    return publisher
+            region_ok = True
+    return region
 
 
 def pedir_region():
-    return ask_region(["na_sales", "eu_sales", "jp_sales", "other_sales"])
+    region = ask_region(["na", "eu", "jp", "other"])
+    if region == "na":
+        region_key = "na_sales"
+    if region == "eu":
+        region_key = "eu_sales"
+    if region == "jp":
+        region_key = "jp_sales"
+    if region == "other":
+        region_key = "other_sales"
+    return region_key
 
 
 def pedir_juego(set_plataformas):
